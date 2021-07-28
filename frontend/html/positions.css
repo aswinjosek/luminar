@@ -1,0 +1,16 @@
+body {
+  height: 1600px;
+}
+.row-1 {
+  height: 100px;
+  width: 200px;
+  background-color: cyan;
+  position: fixed;
+}
+.row-2 {
+  height: 100px;
+  width: 500px;
+  background-color: red;
+  position: sticky;
+  top: 5px;
+}
