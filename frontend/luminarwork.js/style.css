@@ -1,0 +1,12 @@
+.nav-item a{
+    font-size: 14px;
+    font-weight:500;
+    color: #2d3e50 !important;
+}
+
+.nav-item a:hover{
+    color: #570680 !important;
+}
+.carousel-item img{
+    height: 400px;
+}
