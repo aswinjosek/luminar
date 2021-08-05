@@ -1,3 +1,4 @@
+
 .nav-item a{
     font-size: 14px;
     font-weight:500;
@@ -9,4 +10,120 @@
 }
 .carousel-item img{
     height: 400px;
+}
+
+.info-sec{
+    background-color: rgba(194, 192, 190, 0.589);
+}
+
+.back{
+    background-color: #fff;
+}
+
+.container h2{
+    color: #5e068a;
+}
+
+.container span{
+    color:#5e068a99;
+}
+
+.container p{
+    line-height: 32px;
+    font-size: 16px;
+}
+.container .learn_more{
+    padding: 16px 27px;
+    font-weight: 600;
+    margin-top: 21px;
+    border-radius: 50px;
+    background-color: #5e068a;
+    border: 2px solid white;
+    color:white;
+
+}
+
+.container .learn_more:hover{
+    background-color: white;
+    color:#5e068a;
+    border:2px solid#5e068a;
+}
+
+.container .card a{
+    font-weight: 700;
+    text-transform: uppercase;
+    background-color: #5e068a;
+    padding: 12px 20px;
+    color: #fff;
+    text-decoration: none;
+}
+
+
+
+
+
+.container  .new-img{
+    height: 300px;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.container .second_col{
+    width: 50px;
+    
+}
+
+.container .head h3{
+    font-size: 32px;
+    margin-bottom: 50px;
+    padding-top: 0;
+    color: #5e068a;
+    font-weight: 500;
+    line-height: 3;
+    margin: 0 auto;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.second-col h3{
+    font-size: 20px;
+    line-height: 25px;
+    margin-bottom: 15px;
+    font-weight: 700;
+    color: #5e068a;
+    margin-top: 20px;
+    text-transform: uppercase;
+
+}
+.second-col p{
+    margin-bottom: 15px;
+    line-height: 1.8;
+    margin: 0 0 11px;
+}
+.second-btn{
+    display: flex;
+    padding: 16px 27px;
+    font-weight: 600;
+    margin-top: 21px;
+    border-radius: 50px;
+    border: 2px solid #5e068a;
+    color: #5e068a
+
+}
+
+#new{
+    display: flex;
+    justify-content: center;
+}
+
+.new-btn{
+    display: flex;
+    padding: 16px 27px;
+    font-weight: 600;
+    margin-top: 21px;
+    border-radius: 50px;
+    border: 2px solid #5e068a;
+    color: #5e068a
+    
 }
