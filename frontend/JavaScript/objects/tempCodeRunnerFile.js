@@ -1,0 +1,1 @@
+console.log(olympics.sort((key1,key2)=>key1.gold-key2.gold))

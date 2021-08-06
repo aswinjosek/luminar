@@ -1,12 +1,14 @@
 var arr=[1,2,3,4,5,6,7,8]
 
-console.log(arr.filter(num=>num%2==0));
+// console.log(arr.filter(num=>num%2==0));
 
-//name(r)
+// //name(r)
 
-var names=["ram", "ravi","aswin"]
+// var names=["ram", "ravi","aswin"]
 
-console.log(names.filter(name=>name[0]=="r"));
+// console.log(names.filter(name=>name[0]=="r"));
 
 
-
+arr.forEach(element => {
+    console.log(element);
+});

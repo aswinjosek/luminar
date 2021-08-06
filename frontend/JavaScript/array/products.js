@@ -24,9 +24,14 @@ console.log(products.filter(product=>product[3]==0));
 console.log(products.filter(product=>product[2]>250));
 // low cost product
 
-
+var low_cost=products.reduce((item1,item2)=>item1[2]<item2[2]?item1[1]:item2[1]);
+console.log(low_cost);
 
 // is there any item available under 200
 
 console.log(products.filter(product=>product[2]<200).map(product=>product[1]));
 
+//max stock
+
+var max_stock=products.reduce((item1,item2)=>item1[3]>item2[3]?item1:item2)
+console.log(max_stock);

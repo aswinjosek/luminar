@@ -1,15 +1,7 @@
-var min_sal = 0;
-var max_sal=0;
-
-for (let employee of employees) {
-  if (employee[3] > min_sal) {
-    max_sal<min_sal;
-    min_sal=max_sal;
-    // console.log(min_sal);
-    min_sal = employee[3];
-    min_sal=max_sal;
-  }
-  // console.log(employee[3]==max_sal);
-
-}
-console.log(mix_sal);
+var products=[
+    ["001","complan",275,50],
+    ["002","boost",255,20],
+    ["003","horlicks",225,5],
+    ["004","bournvita",230,0],
+    ["005","pediasure",220,10],
+]

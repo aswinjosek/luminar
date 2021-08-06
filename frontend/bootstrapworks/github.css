@@ -1,7 +1,7 @@
 body{
-    background-color: rgba(0, 0, 0, 0.856);
+    background-color: #0d1117;
 }
-.col-4 {
+.col-lg-4 {
     display: flex;
     /* justify-content: cente */
     align-items: center;
@@ -9,9 +9,9 @@ body{
 }
 
 .body-1{
-    height: 280px;
-    width: 100%;
-    background-color: #0b0c0c59;
+    height: 250px;
+    width: 80%;
+    background-color: #161b22;
 
 }
 
@@ -26,9 +26,9 @@ h4{
 }
 
 .new{
-    width: 100%;
+    width: 80%;
     text-align: center;
-    padding: 7px;
+    padding: 10px;
     border-radius: 5px;
     font-weight: 2px;
     
@@ -54,4 +54,13 @@ h4{
     font-size: 12px;
     margin-top: 20px;
     text-decoration: none;
+}
+input{
+    color:white;
+}
+h6{
+    margin-top: 5px;
+}
+label{
+    font-size: 14px;
 }
