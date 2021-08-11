@@ -1,63 +1,27 @@
-var products=[
-    ["001","complan",275,50],
-    ["002","boost",255,20],
-    ["003","horlicks",225,5],
-    ["004","bournvita",230,0],
-    ["005","pediasure",220,10],
-]
+account_details = {
+From Sajay N J to Everyone:  12:31 PM
+class BookLibrary{
 
-// print product names
-
-// print avaialable product name
-
-// print out of stock product details
-
-
-// list all products whose price > 250
-
-// low cost product
-
-// is there any item available under 200
-
-
-
-function fibonacci(n){
-    if (n==0 | n ==1){
-        return n
-    } 
-    else{
-        return fibonacci(n-1)+ fibonacci(n-2)
-    }
-}
-
-#new
-
-
-var olympics=[
+    books = {
+        "randamoozham": { book_name: "randamoozham", price: 470, author: "mt vasudhevan", avl_copies: 100, sold_copies: 100 },
     
-    {country:"unitedstates",gold:30,silver:35,bronze:27,total:92},
-    {country:"japan",gold:22,silver:10,bronze:15,total:47},
-    {country:"aus",gold:17,silver:6,bronze:20,total:43},
-    {country:"china",gold:34,silver:24,bronze:16,total:74},   
-    {country:"india",gold:0,silver:2,bronze:3,total:5},
-    {country:"germany",gold:9,silver:10,bronze:16,total:25},
+        "aadujeevitha": { book_name: "aadujeevitham", price: 500, author: "benyamin", avl_copies: 150, sold_copies: 145 },
+        "rainrising": { book_name: "rainrising", price: 500, author: "nirupama", avl_copies: 200, sold_copies: 140 },
+        "halfgirlfirend": { book_name: "halfgirlfriend", price: 550, author: "chethan bagath", avl_copies: 150, sold_copies: 140 },
+    
+    }
 
-]
+    findBook(book_name){
 
-// print countrynames partcipating 2021 olympics
+    }
+    orderBySold(){
 
-// which country got most goldmedals
+    }
 
-// which contry got most medals
+        
 
-// sort countries based on gold medals
+    
 
-// sort countries based on total medals
 
-// countries got silver > 10
 
-//list of countries whose goldmedal=0
-
-// list the country names whose gold medal >20
-
-// is pakisthan participating in 2021 olympics
+}

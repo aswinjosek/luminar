@@ -1,1 +1,8 @@
-console.log(olympics.sort((key1,key2)=>key1.gold-key2.gold))
+var payment_history=[]
+// datas.map(account=>account.transactions).forEach(transactions=>{
+//     transactions.forEach(trans=>{
+//         trans.to==1000?payment_history.push(trans):" "
+//     })
+// }) 
+
+// console.log(trans);

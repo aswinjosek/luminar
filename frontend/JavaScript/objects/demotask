@@ -1,0 +1,24 @@
+ var userdata={}
+ for(todo of todos){
+  let userId=todo.userId
+  var completed=0
+  var total=0
+  if(!(userId in userdata)){
+    if(todo.completed===true){
+        completed=1
+    }
+    total=1
+    userdata[userId]={
+      "userId":userId,
+      "completed":completed,
+      "total":total,
+    }
+  }
+  else{
+     if(todo.completed===true){
+     completed=userdata[userId]["completed"]+1
+     }
+     else{
+        completed=userdata[userId]["completed"]  
+     }
+     total=userdata[userId]["total"]+1

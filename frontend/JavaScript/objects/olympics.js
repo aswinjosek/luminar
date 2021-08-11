@@ -1,5 +1,5 @@
 var olympics = [
-  { country: "unitedstates", gold: 30, silver: 35, bronze: 27, total: 92 },
+  { country: "us", gold: 30, silver: 35, bronze: 27, total: 92 },
   { country: "japan", gold: 22, silver: 10, bronze: 15, total: 47 },
   { country: "aus", gold: 17, silver: 6, bronze: 20, total: 43 },
   { country: "china", gold: 34, silver: 24, bronze: 16, total: 74 },
@@ -9,8 +9,8 @@ var olympics = [
 
 // print countrynames partcipating 2021 olympics
 
-// for(let keys in olympics){
-//     console.log(olympics[keys].country);
+// for(let keys of olympics){
+//     console.log(keys.country);
 // }
 
 // var ol=olympics.map(keys=>keys.country)
@@ -18,13 +18,13 @@ var olympics = [
 
 // which country got most goldmedals
 
-var ol= olympics.reduce((key1,key2)=>key1.gold>key2.gold?key1:key2);
-console.log(ol);
+// var ol= olympics.reduce((key1,key2)=>key1.gold>key2.gold?key1:key2);
+// console.log(ol);
 
 // which contry got most medals
 
-var ol= olympics.reduce((key1,key2)=>key1.total>key2.total?key1:key2);
-console.log(ol);
+// var ol= olympics.reduce((key1,key2)=>key1.total>key2.total?key1:key2);
+// console.log(ol);
 
 // sort countries based on gold medals
 
@@ -43,8 +43,8 @@ console.log(ol);
 
 // }
 
-// var ol=olympics.filter(keys=>keys.silver>10).map(keys=>keys.country)
-// console.log(ol);
+var ol=olympics.filter(keys=>keys.silver>10).map(keys=>keys.country)
+console.log(ol);
 
 //list of countries whose goldmedal=0
 
@@ -81,5 +81,5 @@ console.log(ol);
 // }
 // console.log(pak == 1 ? "present" : "not present");
 
-// var ol=olympics.find(key=>key.country=="pak")
-// console.log(ol);
+var ol=olympics.some(key=>key.country=="pak")
+console.log(ol);
