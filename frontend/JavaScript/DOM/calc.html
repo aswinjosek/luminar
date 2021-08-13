@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Calculator</title>
+    <script src="./script.js"></script>
+</head>
+
+<body>
+    <h3>Calculator</h3>
+    <br />
+    <style>
+        body {
+            background-color: #d9afd9;
+            background-image: linear-gradient(0deg, #d9afd9 0%, #97d9e1 100%);
+            background-repeat: no-repeat;
+            height: 100vh;
+
+        }
+
+        #calc {
+            width: 300px;
+            height: 250px;
+        }
+
+        .btn {
+            width: 96%;
+            height: 40px;
+            font-size: 20px;
+        }
+    </style>
+
+    <table id="calc">
+        <tr>
+            <td colspan="4">
+                <input class="btn"  id="inpt" type="text" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input class="btn" type="button" onclick="clearBox()" value="C" />
+            </td>
+            <td><input class="btn" type="button" onclick="backSpace()" value="<" /></td>
+            <td>
+                <input class="btn" type="button" value="/" onclick="diaplayValue('/')" />
+            </td>
+            <td>
+                <input class="btn" type="button" value="X" onclick="diaplayValue('*')" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input class="btn" type="button" value="7" onclick="diaplayValue('7')" />
+            </td>
+            <td>
+                <input class="btn" type="button" value="8" onclick="diaplayValue('8')" />
+            </td>
+            <td>
+                <input class="btn" type="button" value="9" onclick="diaplayValue('9')" />
+            </td>
+            <td>
+                <input class="btn" type="button" value="-" onclick="diaplayValue('-')" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input class="btn" type="button" value="4" onclick="diaplayValue('4')" />
+            </td>
+            <td>
+                <input class="btn" type="button" value="5" onclick="diaplayValue('5')" />
+            </td>
+            <td>
+                <input class="btn" type="button" value="6" onclick="diaplayValue('6')" />
+            </td>
+            <td>
+                <input class="btn" type="button" value="+" onclick="diaplayValue('+')" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input class="btn" type="button" value="1" onclick="diaplayValue('1')" />
+            </td>
+            <td>
+                <input class="btn" type="button" value="2" onclick="diaplayValue('2')" />
+            </td>
+            <td>
+                <input class="btn" type="button" value="3" onclick="diaplayValue('3')" />
+            </td>
+            <td rowspan="2">
+                <input class="btn" type="button" value="=" onclick="evalExpression()" style="height: 82px !important" />
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input class="btn" type="button" value="0" onclick="diaplayValue('0')" />
+            </td>
+            <td>
+                <input class="btn" type="button" value="." onclick="diaplayValue('.')" />
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>

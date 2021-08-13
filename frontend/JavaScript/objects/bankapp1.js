@@ -79,4 +79,4 @@ class Bank{
 var obj=new Bank();
 obj.authenticate(1003,"userfour","userfour")
 obj.fundTransfer(1003,1001,1000)
-obj.balanceEnquiry
+obj.balanceEnquiry();
