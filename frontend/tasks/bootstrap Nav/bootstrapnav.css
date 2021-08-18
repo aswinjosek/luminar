@@ -1,0 +1,16 @@
+.navbar{
+    background-color: #7952b3;
+    padding: 0;
+}
+.fab{
+    color: white;
+}
+.btn{
+    font-weight: 600;
+    color: #ffe484;
+    border-color: #ffe484;
+}
+.btn:hover{
+    background-color:#ffe484 ;
+    color: black;
+}

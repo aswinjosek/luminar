@@ -1,0 +1,96 @@
+<!-- 
+list all books
+find by book Name
+search by category -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+</head>
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-4">
+                <button class="btn btn-primary" onclick="listBooks()">display</button>
+                <div>
+                    <input type="text" id="find">
+                    <button class="btn btn-success" onclick="findBookByName()">find book by name</button>
+                </div>
+                <div>
+                    <input type="text" id="search">
+                    <button class="btn btn-success" onclick="findCategory()">find book by category</button>
+                </div>
+            </div>
+            <div class="col-4">
+                <table class="table mt-2">
+                    <tr>
+                        <td>book_name</td>
+                        <td>price</td>
+                        <td>author</td>
+                        <td>avl_copies</td>
+                        <td>sold_copies</td>
+                        <td>category</td>
+                    </tr>
+                    <tbody id="show">
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-4">
+                
+            </div>
+        </div>
+    </div>
+    
+    
+</body>
+<script>
+
+    books = [
+        { book_name: "randamoozham", price: 470, author: "mt vasudhevan", avl_copies: 100, sold_copies: 100,category:"fiction" },
+        { book_name: "aadujeevitham", price: 500, author: "benyamin", avl_copies: 150, sold_copies: 145,category:"horror" },
+        { book_name: "rainrising", price: 500, author: "nirupama", avl_copies: 200, sold_copies: 140,category:"triller" },
+        { book_name: "halfgirlfriend", price: 550, author: "chethan bagath", avl_copies: 150, sold_copies: 140,category:"drama" },
+    ]
+    
+    function listBooks(){
+        let book_data=""
+        for(let book of books){
+            
+            book_data+=`<tr><td>${book.book_name}</td><td>${book.price}</td><td>${book.author}</td><td>${book.avl_copies}</td><td>${book.sold_copies}</td><td>${book.category}</td></tr>`;
+            
+        }
+        show.innerHTML=book_data;
+        
+    }
+    function listBookbyName(data){
+        let book_data=""
+        for(let book of data){
+            
+            book_data+=`<tr><td>${book.book_name}</td><td>${book.price}</td><td>${book.author}</td><td>${book.avl_copies}</td><td>${book.sold_copies}</td><td>${book.category}</td></tr>`;
+            
+        }
+        show.innerHTML=book_data;
+        
+    }
+    function findBookByName(){
+        let bk_name=find.value
+        let res_data=books.filter(bk=>bk.book_name==bk_name)
+        listBookbyName(res_data)
+
+        
+    }
+    function findCategory(){
+        let bk_cat=search.value
+        let res_data=books.filter(bk=>bk.category==bk_cat)
+        listBookbyName(res_data)
+    }
+
+</script>
+</html>

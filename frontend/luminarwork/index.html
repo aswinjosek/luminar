@@ -21,10 +21,23 @@
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="container">
-        <a class="navbar-brand" href="#"
-          ><img src="./images/logo.png" alt=""
+    <div class="header-top pt-2">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-6">
+            <p class="text-white">Have any question? +91 8086 651 651</p>
+          </div>
+          <div class="col-6 d-flex justify-content-end">
+            <p class="text-white">+91 8086 651 651  contact@luminartechnolab.co</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top ">
+      <div class="container   bg-white ">
+        <a class="navbar-brand " href="#"
+          ><img src="https://www.luminartechnolab.com/img/frontend/logo/logo.png" alt=""
         /></a>
         <button
           class="navbar-toggler"
@@ -63,7 +76,7 @@
         </div>
       </div>
     </nav>
-    <div class="container-fluid">
+    <div class="container-fluid w-100">
       <div class="row">
         <div
           id="carouselExampleCaptions"
@@ -179,7 +192,7 @@
         <div class="head">
           <h3>Our <span style="color: #9e6ab9;">Courses</span> </h3>
         </div>
-        <div class="back">
+        <div class="back shadow-lg p-3 mb-5 bg-body rounded">
           <div class="row">
             <div class="col-lg-6">
               <!-- <div class="img-sec"> -->
@@ -204,14 +217,14 @@
     </div>
     <div class="container mt-5">
       <div class="row">
-        <div class="col-lg-4">
+        <div class="col-lg-4 ">
           <div class="card" style="width: 20rem">
             <img
               src="https://www.luminartechnolab.com/storage/uploads/python-1588143191.jpg"
               class="card-img-top"
               alt="..."
             />
-            <div class="card-body">
+            <div class="card-body shadow p-3  bg-body rounded">
               <h5 class="card-title">Card title</h5>
               <p class="card-text">
                 Some quick example text to build on the card title and make up
@@ -221,14 +234,14 @@
             </div>
           </div>
         </div>
-        <div class="col-lg-4">
+        <div class="col-lg-4 ">
           <div class="card" style="width: 20rem">
             <img
               src="https://www.luminartechnolab.com/storage/uploads/st-1588580359.jpg"
               class="card-img-top"
               alt="..."
             />
-            <div class="card-body">
+            <div class="card-body shadow p-3  bg-body rounded">
               <h5 class="card-title">Card title</h5>
               <p class="card-text">
                 Some quick example text to build on the card title and make up
@@ -238,14 +251,14 @@
             </div>
           </div>
         </div>
-        <div class="col-lg-4">
+        <div class="col-lg-4 ">
           <div class="card" style="width:  20rem">
             <img
               src="https://www.luminartechnolab.com/storage/uploads/ms-1623825586.jpg"
               class="card-img-top"
               alt="..."
             />
-            <div class="card-body">
+            <div class="card-body shadow p-3  bg-body rounded ">
               <h5 class="card-title">Card </h5>
               <p class="card-text">
                 Some quick example text to build on the card title and make up
@@ -330,6 +343,54 @@
           <button class="new-btn"> View Courses</button>
         </div>
         <div class="col-4"></div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <h3 class="text-center">Course Details</h3>
+        <div class="col-4">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                MEARN
+              </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseOne">
+                PYTHON DJANGO
+              </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+              </div>
+            </div>
+          </div>
+        </div>
+          
+        <div class="col-4">
+          
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseOne">
+                SOFTWARE TESTING
+              </button>
+            </h2>
+            <div id="collapseThree" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+              </div>
+            </div>
+        </div>
       </div>
     </div>
   </body>
