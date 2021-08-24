@@ -14177,7 +14177,7 @@ var countries = [
 // }
 // console.log(data);
 
-countries.forEach(coun=>console.log(coun.name,coun.population));
+// countries.forEach(coun=>console.log(coun.name,coun.population));
 // countries.forEach(coun=>console.log(coun.name,":",coun.currencies[0].name));
 
 // let dat={}
@@ -14195,3 +14195,4 @@ countries.forEach(coun=>console.log(coun.name,coun.population));
 // }
 
 // console.log(dat);
+countries.sort((a,b)=>a.population-b.population).forEach(i=>console.log(i.name,":",i.population));

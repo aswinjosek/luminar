@@ -24,7 +24,7 @@ search by category -->
                 </div>
                 <div>
                     <input type="text" id="search">
-                    <button class="btn btn-success" onclick="findCategory()">find book by category</button>
+                   <div> <button class="btn btn-success" onclick="findCategory()">find book by category</button></div>
                 </div>
             </div>
             <div class="col-4">
@@ -69,9 +69,9 @@ search by category -->
         show.innerHTML=book_data;
         
     }
-    function listBookbyName(data){
+    function listBookbyName(res_data){
         let book_data=""
-        for(let book of data){
+        for(let book of res_data){
             
             book_data+=`<tr><td>${book.book_name}</td><td>${book.price}</td><td>${book.author}</td><td>${book.avl_copies}</td><td>${book.sold_copies}</td><td>${book.category}</td></tr>`;
             
@@ -81,14 +81,18 @@ search by category -->
     }
     function findBookByName(){
         let bk_name=find.value
+        console.log(bk_name);
         let res_data=books.filter(bk=>bk.book_name==bk_name)
+        // console.log(res_data);
         listBookbyName(res_data)
 
         
     }
     function findCategory(){
         let bk_cat=search.value
+        console.log(bk_cat);
         let res_data=books.filter(bk=>bk.category==bk_cat)
+        // console.log(res_data);
         listBookbyName(res_data)
     }
 
