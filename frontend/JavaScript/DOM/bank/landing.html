@@ -7,34 +7,92 @@
     <title>Bank Home</title>
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-    <style>
-        table{
-            width: 450px;
-        }
-    </style>
+    <script src="./bank.js"></script>
+    <!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+    
 </head>
 <body>
-   <div class="container">
-       <div class="row">
-           <div class="col-4"></div>
-           <div class="col-4" >
-            <table class="table-bordered " id="tab">
-                <h3 class="text-center">Account Details</h3>
-                <tr>
-                    <th>Name</th>
-                    <th>Account Number</th>
-                    <th>Balance</th>
-                    <th>Password</th>
-                    <th>Account Type</th>
-                    
-            
-                </tr>
-            </table>
-           </div>
-           <div class="col-4"></div>
-       </div>
-   </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light ">
+        <div class="container-fluid ">
+          <a class="navbar-brand" href="#">Bank</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="bank.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#exampleModal"  data-bs-toggle="modal" >Fund Transfer</a>
+              </li>
+              <li class="nav-item">
+                
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#" onclick="bank.balanceEnquiry()">Balance Enquiry</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="#"><span id="user"></span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#" onclick="bank.logout()">logout</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <div class="container">
+          <!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Fund Transfer</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          <input type="text" name="" id="toacno" class="form-control mt-2" placeholder="to account number">
+          <input type="number" name="" id="amt" class="form-control mt-2" placeholder="amount">
+      
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" onclick="bank.fundTransfer()">Proceed</button>
+      </div>
+    </div>
+  </div>
+</div>
+         <div class="row">
+         
+              <div class="col-4">
+              </div>
+              <div class="col-4">
+                Welcome <span id="nam"></span>
+              </div>
+              <div class="col-4">
+                
+                <!-- <span id="user"></span> -->
+                
+              </div>
+         </div
+         >
+      </div>
+   
     
 </body>
+<script>
+    let logeduser=JSON.parse(sessionStorage.getItem(sessionStorage.key(0)))
+    user.innerHTML=logeduser.account_no;
+    nam.innerHTML=logeduser.person_name;
+    
+
+    
+
+</script>
 </html>
 
