@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>countries</title>
+    <!-- CSS only -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+      crossorigin="anonymous"
+    />
+    <!-- JavaScript Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row mt-5">
+        <div class="col-4"></div>
+        <div class="col-4">
+          <select value="country" class="form-control" id="c_name" onchange="displayValue()" >
+            <option value="">select country</option>
+          </select>
+         
+          </div>
+        </div>
+        <div class="col-4"></div>
+      </div>
+      <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4" id="data"></div>
+        <div class="col-4"></div>
+      </div>
+    </div>
+  </body>
+  <script>
+    function displayValue() {
+      
+      var country = c_name.value;
+      // console.log(country);
+      // let new_url = `https://restcountries.eu/rest/v2/name/${country}?fullText=true`;
+      // let new_request = new XMLHttpRequest();
+      // new_request.open("get", new_url);
+      // new_request.send();
+      // new_request.onreadystatechange = () => {
+      //   if (new_request.readyState == 4) {
+      //     if (new_request.status > 199 && new_request.status < 300) {
+      //       var country_name = JSON.parse(new_request.responseText);
+      //       console.log(country_name);
+      fetch(`https://restcountries.eu/rest/v2/name/${country}?fullText=true`).then(coun=>{
+        if(coun.ok){
+          return coun.json()
+          console.log(coun);
+        }
+        else{
+          throw new Error("failed to fetch")
+        }
+      })
+        .then(country_name=>{
+          console.log(country_name);
+            var flag = country_name[0].flag;
+            var con_name = country_name[0].name;
+            console.log(con_name);
+            var pop = country_name[0].population;
+            var curr = country_name[0].currencies[0].name;
+            var curr_symbol = country_name[0].currencies[0].symbol;
+            let html_data = `<div class="d-flex justify-content-center"><div class="card mt-5 " style="width: 18rem;">
+      <img src="${flag}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">${con_name}</h5>
+      
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">population: ${pop}</li>
+        <li class="list-group-item">currency: ${curr}</li>
+        <li class="list-group-item">currency symbol: ${curr_symbol}</li>
+      </ul>
+      
+    </div></div>`;
+      data.innerHTML = html_data;
+            
+          }).catch(error=>alert(error.message))
+      
+      
+    
+        
+    
+    }
+
+    function getcountryDetails() {
+      console.log("aswin");
+      // let url = `https://restcountries.eu/rest/v2/all`;
+      // let request = new XMLHttpRequest();
+      // request.open("get", url);
+      // request.send();
+      // request.onreadystatechange = () => {
+      //   if (request.readyState == 4) {
+      //     if (request.status > 199 && request.status < 300) {
+      //       let country_data = JSON.parse(request.responseText);
+      //       console.log(country_data);
+      // let country_data=[];
+      fetch("https://restcountries.eu/rest/v2/all").then(country=>{
+        if(country.ok){
+          return country.json()
+
+        }
+        else{
+          throw new Error("failed to fetch")
+        }
+      }).then(country_data=>{
+      
+
+            for (let country of country_data) {
+            //   console.log(country_data[i].name);
+              var select = document.getElementById("c_name");
+              select.innerHTML =
+                select.innerHTML +
+                `<option value=
+                ${country.name}
+                >
+               ${country.name}
+                </option>`;
+            }
+          }).catch(error=>alert(error.message))
+          
+        
+      
+
+    }
+   
+    
+    window.onload=getcountryDetails()
+    
+    
+  </script>
+</html>

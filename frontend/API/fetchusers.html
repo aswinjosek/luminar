@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+</head>
+<body>
+    <h1>users</h1>
+    <button onclick="fetchTodo()">ckick</button>
+    <table class="table">
+        <td>userid</td>
+        <td>id</td>
+        <td>title</td>
+        <td>completed</td>
+        <tbody id="result" >
+
+        </tbody>
+    </table>
+
+    <script>
+        function displayValue(todos){
+            let htmldata=""
+            for(let todo of todos){
+                htmldata+= `<tr><td>${todo.userId}</td><td>${todo.id}</td><td>${todo.title}</td><td>${todo.completed}</td></tr>`
+            }
+            result.innerHTML=htmldata;
+
+        }
+
+       function fetchTodo(){
+            var request= new XMLHttpRequest()
+            request.open("get","https://jsonplaceholder.typicode.com/todos")
+            request.send()
+            request.onreadystatechange=()=>{
+                if(request.readyState==4){
+                    if(request.status>199 && request.status<300){
+                        var todos=JSON.parse(request.responseText)
+                        displayValue(todos);
+                      
+                    }
+                    else{
+                        console.log("failed status code");
+                    }
+                }
+                else{
+                    console.log("failed readystate");
+                }
+            }
+        }
+    </script>
+    
+</body>
+</html>
