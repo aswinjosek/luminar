@@ -19,23 +19,38 @@
       crossorigin="anonymous"
     ></script>
   </head>
+  <style>
+    *{
+      box-sizing: border-box;
+    }
+    
+    body{
+      
+      background-image:url(./img/christian-lue-7dEyTJ7-8os-unsplash.jpg);
+      background-size: cover;
+      background-repeat: no-repeat;
+      
+      
+
+    }
+  </style>
   <body>
     <div class="container">
       <div class="row mt-5">
-        <div class="col-4"></div>
-        <div class="col-4">
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"></div>
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
           <select value="country" class="form-control" id="c_name" onchange="displayValue()" >
             <option value="">select country</option>
           </select>
          
           </div>
         </div>
-        <div class="col-4"></div>
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6"></div>
       </div>
       <div class="row">
-        <div class="col-4"></div>
-        <div class="col-4" id="data"></div>
-        <div class="col-4"></div>
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6"></div>
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6" id="data"></div>
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6"></div>
       </div>
     </div>
   </body>
@@ -43,7 +58,7 @@
     function displayValue() {
       
       var country = c_name.value;
-      // console.log(country);
+      console.log(country);
       // let new_url = `https://restcountries.eu/rest/v2/name/${country}?fullText=true`;
       // let new_request = new XMLHttpRequest();
       // new_request.open("get", new_url);
@@ -63,10 +78,10 @@
         }
       })
         .then(country_name=>{
+          console.log("2");
           console.log(country_name);
             var flag = country_name[0].flag;
             var con_name = country_name[0].name;
-            console.log(con_name);
             var pop = country_name[0].population;
             var curr = country_name[0].currencies[0].name;
             var curr_symbol = country_name[0].currencies[0].symbol;
@@ -76,9 +91,9 @@
         <h5 class="card-title">${con_name}</h5>
       
       <ul class="list-group list-group-flush">
-        <li class="list-group-item">population: ${pop}</li>
-        <li class="list-group-item">currency: ${curr}</li>
-        <li class="list-group-item">currency symbol: ${curr_symbol}</li>
+        <li class="list-group-item">Population:&nbsp<span style="font-weight: bold;"> ${pop}</span></li>
+        <li class="list-group-item">Currency:&nbsp<span style="font-weight: bold;"> ${curr}</span></li>
+        <li class="list-group-item">Currency symbol:&nbsp<span style="font-weight: bold;"> ${curr_symbol}</span></li>
       </ul>
       
     </div></div>`;
@@ -93,7 +108,7 @@
     }
 
     function getcountryDetails() {
-      console.log("aswin");
+      console.log("1");
       // let url = `https://restcountries.eu/rest/v2/all`;
       // let request = new XMLHttpRequest();
       // request.open("get", url);
@@ -121,15 +136,15 @@
               select.innerHTML =
                 select.innerHTML +
                 `<option value=
-                ${country.name}
+                ${country.alpha2Code}
                 >
                ${country.name}
                 </option>`;
+                
             }
           }).catch(error=>alert(error.message))
           
         
-      
 
     }
    
