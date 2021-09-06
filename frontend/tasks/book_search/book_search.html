@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #displaybook{
+            display:flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        img{
+            height:340px
+        }
+    </style>
+    <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+</head>
+<body>
+    <div class="class-top-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-4"></div>
+                <div class="col-4">
+                    <input type="text" placeholder="enter book name" class="form-control mt-3" id="book_name" >
+                </div>
+                <div class="col-4">
+                    <button class="btn btn-primary mt-3" onclick="fetchBook()">find</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div id="displaybook" ></div>
+        </div>
+    </div>
+    
+</body>
+<script>
+    function fetchBook(){
+        let book=book_name.value;
+        var url=`https://www.googleapis.com/books/v1/volumes?q=${book}`
+        fetch(url).then(res=>res.json()).then(data=>display(data));
+    }
+    function display(data){
+    let html_data= " " 
+        for(let book of data.items){
+            console.log(book);
+          html_data+= `<div class="card" style="width: 18rem;">
+  <img src="${book.volumeInfo.imageLinks.thumbnail}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">${book.volumeInfo.title}</h5>
+   
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">An item</li>
+    <li class="list-group-item">A second item</li>
+    <li class="list-group-item">A third item</li>
+  </ul>
+  
+</div>`
+
+
+        }
+        displaybook.innerHTML=html_data
+
+    }
+</script>
+</html>
