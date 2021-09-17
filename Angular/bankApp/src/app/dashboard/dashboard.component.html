@@ -1,0 +1,85 @@
+<!-- <p>dashboard works!</p> -->
+<div class="container">
+    <h1>hello {{user}}</h1>
+    <div class="row">
+        <div class="col-6">
+            <form (ngSubmit)="deposit()" [formGroup]="depositForm">
+                <div class="account mt-5 p-2 d-flex-justify-content-center">
+                    <h3 class="text-center text-black">Deposit</h3>
+                    <div class="row mt-5">
+                        <div class="col-12 mt-3">
+                            <input type="text" class="form-control" id="acno" name="acno" formControlName="acno" 
+                                placeholder="Account Number" aria-label="Last name" />
+                        </div>
+                        <div *ngIf="(this.depositForm.get('acno')?.touched||this.depositForm.get('acno')?.dirty)&&this.depositForm.get('acno')?.errors" class="text-danger">Invalid Account Number</div>
+
+    
+                        <div class="col-12 mt-4">
+                            <input type="password" class="form-control" id="pswd" name="pswd"  placeholder="Password" formControlName="pswd"
+                                aria-label="Last name" />
+                        </div>
+                        <div *ngIf="(this.depositForm.get('pswd')?.touched||this.depositForm.get('pswd')?.dirty)&&this.depositForm.get('pswd')?.errors" class="text-danger">Invalid password</div>
+
+                        <div class="col-12 mt-4">
+                            <input type="number" class="form-control" id="amt" name="amt"  placeholder="Amount" formControlName="amt"
+                                aria-label="Last name" />
+                        </div>
+                        <div *ngIf="(this.depositForm.get('amt')?.touched||this.depositForm.get('amt')?.dirty)&&this.depositForm.get('amt')?.errors" class="text-danger">Invalid amount</div>
+
+    
+                        <div>
+                            <div class="d-flex justify-content-center mt-5">
+                                <button class="btn btn-primary" type="submit" >
+                                    Deposit
+                                </button>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        
+            
+            <div class="col-6">
+                <form (ngSubmit)="withdraw()" [formGroup]="withdrawForm" >
+                <div class="account mt-5 p-2 d-flex-justify-content-center">
+                    <h3 class="text-center text-black">Withdraw</h3>
+                    <div class="row mt-5">
+                    <div class="col-12 mt-3">
+                        <input type="text" class="form-control" id="wacno" name="wacno" formControlName="wacno"
+                            placeholder="Account Number" aria-label="Last name" />
+                    </div>
+                    <div *ngIf="(this.withdrawForm.get('wacno')?.touched||this.withdrawForm.get('wacno')?.dirty)&&this.withdrawForm.get('wacno')?.errors" class="text-danger">Invalid Account Number</div>
+
+
+                    <div class="col-12 mt-4">
+                        <input type="password" class="form-control" id="wpswd" name="wpswd" formControlName="wpswd"
+                            placeholder="Password" aria-label="Last name" />
+                    </div>
+                    <div *ngIf="(this.withdrawForm.get('wpswd')?.touched||this.withdrawForm.get('wpswd')?.dirty)&&this.withdrawForm.get('wpswd')?.errors" class="text-danger">Invalid password</div>
+
+                    <div class="col-12 mt-4">
+                        <input type="number" class="form-control" id="wamt" name="wamt" formControlName="wamt"
+                            placeholder="Amount" aria-label="Last name" />
+                    </div>
+                    <div *ngIf="(this.withdrawForm.get('wamt')?.touched||this.withdrawForm.get('wamt')?.dirty)&&this.withdrawForm.get('wamt')?.errors" class="text-danger">Invalid Amount</div>
+
+                    <div>
+                        <div class="d-flex justify-content-center mt-5">
+                            <button class="btn btn-primary" type="submit">Withdraw</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </form>
+            
+            </div>
+            
+            <!-- </div> -->
+            <div class="d-flex-justify-content-center"><button class="btn btn-primary  " (click)="balance()">balance</button></div>
+    </div>
+</div>
+<!-- </div>
+</div> -->

@@ -1,0 +1,55 @@
+<!-- <p>register works!</p> -->
+
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-4"></div>
+            <div class="col-lg-4">
+              <form (ngSubmit)="register()" [formGroup]="registerForm">
+                    <div class="account mt-5 p-2">
+                        <h3 class="text-center text-white">Create Account</h3>
+                        <div class="row">
+                            <div class="col">
+                                <div class="col-12 mt-3">
+                                    <input type="text" class="form-control" id="pname" name="pname" placeholder="Name" formControlName="name"
+                                        aria-label="Last name" />
+                                </div>
+                                <div *ngIf="(this.registerForm.get('name')?.touched||this.registerForm.get('name')?.dirty)&&this.registerForm.get('name')?.errors" class="text-danger">Invalid username</div>
+        
+                                <div class="col-12 mt-3">
+                                    <input type="text" class="form-control" id="acno" name="acno" placeholder="Account Number"
+                                    formControlName="acno" aria-label="Last name" />
+                                </div>
+                                <div *ngIf="(this.registerForm.get('acno')?.touched||this.registerForm.get('acno')?.dirty)&&this.registerForm.get('acno')?.errors" class="text-danger">Invalid Account Number</div>
+                                <!-- <div>
+                                      <select class="form-select mt-3 " aria-label="Default select example">
+                                        <option selected>Account Type</option>
+                                        <option value="1">Savings</option>
+                                        <option value="2">Current</option>
+                                        <option value="3">Three</option> 
+                                      </select>
+                                 </div> -->
+                                <div class="col-12 mt-3">
+                                    <input type="password" class="form-control" id="pwd" placeholder="Password" name="pwd"
+                                    formControlName="pswd" aria-label="Last name" />
+                                </div>
+                                <div *ngIf="(this.registerForm.get('pswd')?.touched||this.registerForm.get('pswd')?.dirty)&&this.registerForm.get('pswd')?.errors" class="text-danger">Invalid password</div>
+                                <div class="col-12 mt-3">
+                                    <input type="text" class="form-control" id="bal" placeholder="Balance" name="bal" formControlName="bal"
+                                        aria-label="Last name" />
+                                </div>
+                                <div *ngIf="(this.registerForm.get('bal')?.touched||this.registerForm.get('bal')?.dirty)&&this.registerForm.get('bal')?.errors" class="text-danger">Invalid balance</div>
+                                <div class="d-flex justify-content-center mt-3">
+                                    <button class="btn btn-primary" type="submit">
+                                        Submit
+                                    </button>
+                                    <a class="ms-3" routerLink="">login</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+              </form>
+                <div class="col-4"></div>
+            </div>
+        </div>
+    </div>
