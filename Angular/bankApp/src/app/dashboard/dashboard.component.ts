@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder,Validators } from '@angular/forms';
 import { DataService } from '../services/data.service';
+import { TransactionComponent } from '../transaction/transaction.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,6 +10,7 @@ import { DataService } from '../services/data.service';
 })
 export class DashboardComponent implements OnInit {
   user=this.data.currentUser
+  acno=this.tc.acno
   
 
  
@@ -29,7 +31,7 @@ export class DashboardComponent implements OnInit {
     wamt:['',[Validators.required,Validators.pattern('[0-9]*')]]
   })
 
-  constructor(private data:DataService,private fb:FormBuilder) { }
+  constructor(private data:DataService,private fb:FormBuilder,private tc:TransactionComponent) { }
 
   ngOnInit(): void {
     
@@ -76,8 +78,8 @@ export class DashboardComponent implements OnInit {
     
   }
   balance(){
-    var bal=this.data.balance
-    alert(bal)
+    var result=this.data.userBalance(this.acno)
+    alert(result)
 
   }
  

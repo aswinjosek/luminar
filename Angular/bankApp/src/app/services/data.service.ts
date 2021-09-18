@@ -7,11 +7,11 @@ import { RegisterComponent } from '../register/register.component';
 })
 export class DataService {
   currentUser=''
-  balance=''
+  accountNo=''
   user: any = {
-    1000: { uname: 'aswin', acno: 1000, password: 'user1', balance: 5000 },
-    1001: { uname: 'bestin', acno: 1001, password: 'user2', balance: 6000 },
-    1002: { uname: 'amal', acno: 1002, password: 'user3', balance: 7000 },
+    1000: { uname: 'aswin', acno: 1000, password: 'user1', balance: 5000,transaction:[]},
+    1001: { uname: 'bestin', acno: 1001, password: 'user2', balance: 6000,transaction:[]},
+    1002: { uname: 'amal', acno: 1002, password: 'user3', balance: 7000,transaction:[]},
   };
 
   constructor() {
@@ -25,9 +25,14 @@ export class DataService {
     if(this.currentUser){
     localStorage.setItem("currentUser",JSON.stringify(this.currentUser))
     }
-    if(this.balance){
-      localStorage.setItem("balance",JSON.stringify(this.balance))
-      }
+    // if(this.balance){
+    //   localStorage.setItem("balance",JSON.stringify(this.balance))
+    // }
+    if(this.accountNo){
+      localStorage.setItem("accountNo",JSON.stringify(this.accountNo))
+      
+      
+    }
   }
 
   getDetails(){
@@ -42,10 +47,10 @@ export class DataService {
       console.log(this.currentUser);
       
     }
-    if(localStorage.getItem("balance")){
-      this.balance=JSON.parse(localStorage.getItem("balance") ||'')
-      console.log(this.balance);
-    }
+    // if(localStorage.getItem("balance")){
+    //   this.balance=JSON.parse(localStorage.getItem("balance") ||'')
+    //   console.log(this.balance);
+    // }
   }
 
   register(name: any, acno: any, pswd: any, bal: any) {
@@ -58,6 +63,7 @@ export class DataService {
         acno: acno,
         password: pswd,
         balance: bal,
+        transaction:[]
       };
 
       // console.log(accdetails);
@@ -73,7 +79,10 @@ export class DataService {
       // alert("login succesful")
       // this.router.navigateByUrl("dashboard")
       this.currentUser=accdetails[acno]["uname"]
-      this.balance=accdetails[acno]["balance"]
+      // this.balance=accdetails[acno]["balance"]
+      this.accountNo=acno
+      console.log(this.accountNo);
+      
       this.saveDetails()
       return true;
       }
@@ -87,11 +96,20 @@ export class DataService {
       return false;
     }
   }
+
+  getTransaction(acno:any){
+    return this.user[acno]["transaction"]
+
+  }
   deposit(acno:any,pswd:any,amt:any){
     let accdetails=this.user
     if(acno in accdetails){
       if(pswd==accdetails[acno]["password"]){
-        accdetails[acno]["balance"]+=amt
+        accdetails[acno]["balance"]+=amt;
+        accdetails[acno]["transaction"].push({amount:amt,
+        type:"credit",balance:accdetails[acno]["balance"]});
+        // console.log(accdetails);
+        
         this.saveDetails()
         return true;
       
@@ -117,6 +135,9 @@ export class DataService {
       if(wpswd==accdetails[wacno]["password"]){
         if(accdetails[wacno]["balance"]>=wamt){
           accdetails[wacno]["balance"]-=wamt;
+          accdetails[wacno]["transaction"].push({amount:wamt,
+        type:"debit",balance:accdetails[wacno]["balance"]})
+          // console.log(accdetails);
           this.saveDetails()
           
           
@@ -139,5 +160,8 @@ export class DataService {
     }
 
 
+  }
+  userBalance(acno:any){
+    return this.user[acno]["balance"]
   }
 }
