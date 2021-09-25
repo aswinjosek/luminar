@@ -1,42 +1,44 @@
 <!-- <p>login works!</p> -->
 
 
-<div class="container-fluid">
-    
-    <div class="row">
-        <div class="col-4"></div>
-        <div class="col-lg-4">
-            <div class="account mt-5 p-2 d-flex-justify-content-center">
-                <h3 class="text-center text-white">Log In</h3>
-                <div class="row mt-5">
-                   <form [formGroup]="loginForm" (ngSubmit)="login()">
-                        <div class="col">
-                            <div class="col-12 mt-3">
-                                <input type="text" class="form-control" id="acno" placeholder="Account Number"
-                                    name="acno" formControlName="acno" aria-label="Last name" />
-                            </div>
-                            <div *ngIf="(this.loginForm.get('acno')?.touched||this.loginForm.get('acno')?.dirty)&&this.loginForm.get('acno')?.errors" class="text-danger">Invalid Account Number</div>
-    
-                            <div class="col-12 mt-4">
-                                <input type="password" class="form-control" id="pwd" placeholder="Password" name="pwd"
-                                    formControlName="pswd" aria-label="Last name" />
-                            </div>
-                            <div *ngIf="(this.loginForm.get('pswd')?.touched||this.loginForm.get('pswd')?.dirty)&&this.loginForm.get('pswd')?.errors" class="text-danger">Invalid Password</div>
-    
-                            <div>
-                                <div class="d-flex justify-content-center mt-5">
-                                    <button class="btn btn-primary" type="submit" >
-                                        Sign In
-                                    </button>
-                                    <a class="ms-3" routerLink="register">Register</a>
+<body>
+    <div class="container-fluid">
+        
+        <div class="row">
+            <div class="col-4"></div>
+            <div class="col-lg-4">
+                <div class="account mt-5 p-2 d-flex-justify-content-center">
+                    <h3 class="text-center text-white">Log In</h3>
+                    <div class="row mt-5">
+                       <form [formGroup]="loginForm" (ngSubmit)="login()">
+                            <div class="col">
+                                <div class="col-12 mt-3">
+                                    <input type="text" class="form-control" id="acno" placeholder="Account Number"
+                                        name="acno" formControlName="acno" aria-label="Last name" />
+                                </div>
+                                <div *ngIf="(this.loginForm.get('acno')?.touched||this.loginForm.get('acno')?.dirty)&&this.loginForm.get('acno')?.errors" class="text-danger">Invalid Account Number</div>
+        
+                                <div class="col-12 mt-4">
+                                    <input type="password" class="form-control" id="pwd" placeholder="Password" name="pwd"
+                                        formControlName="pswd" aria-label="Last name" />
+                                </div>
+                                <div *ngIf="(this.loginForm.get('pswd')?.touched||this.loginForm.get('pswd')?.dirty)&&this.loginForm.get('pswd')?.errors" class="text-danger">Invalid Password</div>
+        
+                                <div>
+                                    <div class="d-flex justify-content-center mt-5">
+                                        <button class="btn btn-primary" type="submit" >
+                                            Sign In
+                                        </button>
+                                        <a class="ms-3" routerLink="register">Register</a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                   </form>
-
+                       </form>
+    
+                    </div>
                 </div>
+                <div class="col-4"></div>
             </div>
-            <div class="col-4"></div>
         </div>
     </div>
-</div>
+</body>

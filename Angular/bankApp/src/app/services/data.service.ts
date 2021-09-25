@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { RegisterComponent } from '../register/register.component';
+import { DatePipe } from '@angular/common';
 
 @Injectable({
   providedIn: 'root',
@@ -8,14 +8,19 @@ import { RegisterComponent } from '../register/register.component';
 export class DataService {
   currentUser=''
   accountNo=''
+  myDate:any
+  
+  
   user: any = {
     1000: { uname: 'aswin', acno: 1000, password: 'user1', balance: 5000,transaction:[]},
     1001: { uname: 'bestin', acno: 1001, password: 'user2', balance: 6000,transaction:[]},
     1002: { uname: 'amal', acno: 1002, password: 'user3', balance: 7000,transaction:[]},
   };
 
-  constructor() {
+  constructor(private datePipe: DatePipe) {
     this.getDetails()
+    
+    
   }
 
   saveDetails(){
@@ -25,9 +30,7 @@ export class DataService {
     if(this.currentUser){
     localStorage.setItem("currentUser",JSON.stringify(this.currentUser))
     }
-    // if(this.balance){
-    //   localStorage.setItem("balance",JSON.stringify(this.balance))
-    // }
+  
     if(this.accountNo){
       localStorage.setItem("accountNo",JSON.stringify(this.accountNo))
       
@@ -47,10 +50,7 @@ export class DataService {
       console.log(this.currentUser);
       
     }
-    // if(localStorage.getItem("balance")){
-    //   this.balance=JSON.parse(localStorage.getItem("balance") ||'')
-    //   console.log(this.balance);
-    // }
+    
   }
 
   register(name: any, acno: any, pswd: any, bal: any) {
@@ -64,6 +64,7 @@ export class DataService {
         password: pswd,
         balance: bal,
         transaction:[]
+        
       };
 
       // console.log(accdetails);
@@ -98,6 +99,8 @@ export class DataService {
   }
 
   getTransaction(acno:any){
+    
+    
     return this.user[acno]["transaction"]
 
   }
@@ -105,9 +108,12 @@ export class DataService {
     let accdetails=this.user
     if(acno in accdetails){
       if(pswd==accdetails[acno]["password"]){
-        accdetails[acno]["balance"]+=amt;
+        this.myDate=new Date()
+        this.myDate = this.datePipe.transform(this.myDate, 'dd-MM-yyyy, hh:mm:ss a');
+        console.log(this.myDate);
+        accdetails[acno]["balance"]+=Number(amt);
         accdetails[acno]["transaction"].push({amount:amt,
-        type:"credit",balance:accdetails[acno]["balance"]});
+        type:"credit",balance:accdetails[acno]["balance"],date:this.myDate});
         // console.log(accdetails);
         
         this.saveDetails()
@@ -135,8 +141,11 @@ export class DataService {
       if(wpswd==accdetails[wacno]["password"]){
         if(accdetails[wacno]["balance"]>=wamt){
           accdetails[wacno]["balance"]-=wamt;
+          this.myDate=new Date()
+          this.myDate = this.datePipe.transform(this.myDate, 'dd-MM-yyyy,  hh:mm:ss a');
+          console.log(this.myDate);
           accdetails[wacno]["transaction"].push({amount:wamt,
-        type:"debit",balance:accdetails[wacno]["balance"]})
+        type:"debit",balance:accdetails[wacno]["balance"],date:this.myDate})
           // console.log(accdetails);
           this.saveDetails()
           

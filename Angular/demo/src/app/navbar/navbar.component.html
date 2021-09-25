@@ -1,0 +1,14 @@
+<!-- <p>navbar works!</p> -->
+<body>
+    <div class="nav">
+        <div class="link">
+            <a routerLinkActive="active" routerLink='/' [routerLinkActiveOptions]="{exact:true}">Home</a>
+            <a routerLinkActive="active" routerLink="/contact">Contact</a>
+            <a routerLinkActive="active" routerLink="/student">Student</a>
+            <a routerLinkActive="active" [routerLink]="['/about']">About</a>
+            <a routerLinkActive="active" routerLink="/student:1">Student1</a>
+
+
+        </div>
+    </div>
+</body>

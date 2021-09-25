@@ -8,6 +8,7 @@ import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { RegisterComponent } from './register/register.component';
 import { TransactionComponent } from './transaction/transaction.component';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import { TransactionComponent } from './transaction/transaction.component';
     ReactiveFormsModule
   ],
     
-    providers: [TransactionComponent],
+    providers: [TransactionComponent,DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

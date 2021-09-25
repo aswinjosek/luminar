@@ -3,6 +3,7 @@ import { FormBuilder,Validators } from '@angular/forms';
 import { DataService } from '../services/data.service';
 import { TransactionComponent } from '../transaction/transaction.component';
 
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -11,6 +12,7 @@ import { TransactionComponent } from '../transaction/transaction.component';
 export class DashboardComponent implements OnInit {
   user=this.data.currentUser
   acno=this.tc.acno
+  
   
 
  
