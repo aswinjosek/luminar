@@ -112,18 +112,21 @@ app.get('/',(req,res)=>{
 
 app.post('/register',(req,res)=>{
 
-    console.log((req.body));
+    // console.log((req.body));
 
-    const result=(dataService.register(req.body.name,req.body.acno,req.body.pswd,req.body.bal))
+    (dataService.register(req.body.name,req.body.acno,req.body.pswd,req.body.bal))
+    .then(result=>{
+        res.status(result.statusCode).json(result.message)
+    })
     
-    res.status(result.statusCode).json(result.message)
+    
 })
 
 //bank login api
 app.post('/login',(req,res)=>{
     // console.log((req.body));
 
-    const result=(dataService.login(req,req.body.acno,req.body.pswd))
+    const result=(dataService.login(req.body.acno,req.body.pswd))
     
     res.status(result.statusCode).json(result)
 

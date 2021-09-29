@@ -1,7 +1,8 @@
 //importing jwt
-const jwt= require('jsonwebtoken')
+const jwt = require("jsonwebtoken");
 
-
+//importing DB
+const db = require("./db");
 
 user = {
   1000: {
@@ -27,51 +28,72 @@ user = {
   },
 };
 
-
-
 const register = (name, acno, pswd, bal) => {
-  console.log("reg works");
+  return db.User.findOne({ acno }).then((user) => {
+    if (user) {
+      return {
+        statusCode: 422,
+        status: false,
+        message: "user already exists... Please Login",
+      };
+    }
+    else{
+      const newUser= new db.User({
+        uname:name,
+        acno,
+        password:pswd,
+        balance:bal,
+        transaction: []
+      })
+      newUser.save()
+      return {
+        statusCode: 200,
+        status: true,
+        message: "succesfully registered",
+      };
+    }
+  });
 
-  if (acno in user) {
-    return {
-      statusCode: 422,
-      status: false,
-      message: "user already exists... Please Login",
-    };
-  } else {
-    user[acno] = {
-      uname: name,
-      acno: acno,
-      password: pswd,
-      balance: bal,
-      transaction: [],
-    };
+  // if (acno in user) {
+  //   return {
+  //     statusCode: 422,
+  //     status: false,
+  //     message: "user already exists... Please Login",
+  //   };
+  // } else {
+  //   user[acno] = {
+  //     uname: name,
+  //     acno: acno,
+  //     password: pswd,
+  //     balance: bal,
+  //     transaction: [],
+  //   };
 
-    return {
-      statusCode: 200,
-      status: true,
-      message: "Account Created",
-    };
-  }
+  //   return {
+  //     statusCode: 200,
+  //     status: true,
+  //     message: "Account Created",
+  //   };
+  // }
 };
 
 //login
 
-const login = (req,acno, pswd) => {
+const login = (acno, pswd) => {
   if (acno in user) {
     if (pswd == user[acno]["password"]) {
       currentUser = user[acno]["uname"];
 
       // accountNo = acno;
-      req.session.currentAcno=user[acno]["acno"];
+      // req.session.currentAcno=user[acno]["acno"];
 
-      //token generation 
-      const token=jwt.sign({currentAcno:acno},'spersecretkey123123')
+      //token generation
+      const token = jwt.sign({ currentAcno: acno }, "spersecretkey123123");
       return {
         statusCode: 200,
         status: true,
         message: "Login success",
-        token
+        token,
       };
     } else {
       return {
@@ -98,7 +120,6 @@ const deposit = (acno, pswd, amt) => {
   //     status: false,
   //     message: "please login",
   //   };
-
 
   // }
   // checkAcno=req.session.currentAcno
@@ -146,16 +167,16 @@ const deposit = (acno, pswd, amt) => {
 
 //withdraw
 
-const withdraw=(acno, pswd, amt) => {
+const withdraw = (acno, pswd, amt) => {
   if (acno in user) {
     if (pswd == user[acno]["password"]) {
-      if (user[acno]["balance"]>=amt) {
-        user[acno]["balance"]-=amt;
+      if (user[acno]["balance"] >= amt) {
+        user[acno]["balance"] -= amt;
         user[acno]["transaction"].push({
           amount: amt,
           type: "debit",
-          balance: user[acno]["balance"]
-        })
+          balance: user[acno]["balance"],
+        });
 
         return {
           statusCode: 200,
@@ -166,7 +187,6 @@ const withdraw=(acno, pswd, amt) => {
             user[acno]["balance"],
         };
       } else {
-        
         return {
           statusCode: 422,
           status: false,
@@ -213,7 +233,4 @@ module.exports = {
   deposit,
   withdraw,
   getTransaction,
-  
-  
-
 };
