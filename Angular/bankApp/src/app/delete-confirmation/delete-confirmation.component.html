@@ -1,0 +1,8 @@
+
+<div class="border" style="text-align: center;"  *ngIf="this.item">
+    <p>Are you sure want to delete {{item}}?</p>
+    <button class="btn btn-danger" (click)="delete()">Delete</button>
+    <button class="btn btn-primary ms-2" (click)="cancel()">Cancel</button>
+
+    <br>
+</div>

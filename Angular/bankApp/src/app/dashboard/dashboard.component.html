@@ -83,6 +83,12 @@
             <div class="d-flex-justify-content-center"><button class="btn btn-primary  " (click)="balance()">balance</button></div>
             <div><a routerLink="">Login</a></div>
     </div>
+    <br>
+    <br>
+    <app-delete-confirmation (onCancel)="onCancel()" (onDelete)="onDelete($event)" [item]="acno"></app-delete-confirmation>
+    <button class="btn btn-danger mt-2 " (click)="deleteConfirm()">delete</button>
+    <br>
+    <br>
 </div>
 <!-- </div>
 </div> -->

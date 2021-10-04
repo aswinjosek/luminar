@@ -16,6 +16,15 @@ const dataService=require('./services/data.service')
 //import JWT
 const jwt=require('jsonwebtoken')
 
+//importing cors
+const cors=require('cors')
+
+//allowing resource sharing using cors
+app.use(cors({
+    origin:'http://localhost:4200',
+    Credentials:true
+}))
+
 //to generate session
 app.use(session({
     secret:'randomsecretkey',
@@ -61,7 +70,6 @@ const authMiddleWare =(req,res,next)=>{
 
 const jwtMiddleWare=(req,res,next)=>{
     try{
-        console.log("jwt");
         const token=req.headers['access-token']
         const data=jwt.verify(token,'spersecretkey123123')
         req.currentAcno=data.currentAcno
@@ -114,9 +122,9 @@ app.post('/register',(req,res)=>{
 
     // console.log((req.body));
 
-    (dataService.register(req.body.name,req.body.acno,req.body.pswd,req.body.bal))
+    (dataService.register(req.body.uname,req.body.acno,req.body.password,req.body.balance))
     .then(result=>{
-        res.status(result.statusCode).json(result.message)
+        res.status(result.statusCode).json(result)
     })
     
     
@@ -126,9 +134,13 @@ app.post('/register',(req,res)=>{
 app.post('/login',(req,res)=>{
     // console.log((req.body));
 
-    const result=(dataService.login(req.body.acno,req.body.pswd))
+    dataService.login(req.body.acno,req.body.password)
+    .then(result =>{
+        res.status(result.statusCode).json(result)
+
+    })
     
-    res.status(result.statusCode).json(result)
+    
 
 })
 
@@ -136,9 +148,13 @@ app.post('/login',(req,res)=>{
 app.post('/deposit',jwtMiddleWare,(req,res)=>{
     // console.log((req.body));
 
-    const result=(dataService.deposit(req.body.acno,req.body.pswd,req.body.amt))
+    (dataService.deposit(req.body.acno,req.body.password,req.body.amount))
+    .then(result=>{
+        res.status(result.statusCode).json(result)
+
+    })
     
-    res.status(result.statusCode).json(result.message)
+    
 
 })
 
@@ -146,9 +162,12 @@ app.post('/deposit',jwtMiddleWare,(req,res)=>{
 app.post('/withdraw',jwtMiddleWare,(req,res)=>{
     // console.log((req.body));
 
-    const result=(dataService.withdraw(req.body.acno,req.body.pswd,req.body.amt))
+    (dataService.withdraw(req,req.body.acno,req.body.password,req.body.amount))
+    .then(result=>{
+        res.status(result.statusCode).json(result)
+    })
     
-    res.status(result.statusCode).json(result.message)
+    
 
 })
 
@@ -157,10 +176,21 @@ app.post('/withdraw',jwtMiddleWare,(req,res)=>{
 app.post('/transaction',jwtMiddleWare,(req,res)=>{
     
 
-    const result=(dataService.getTransaction(req.body.acno))
-    
-    res.status(result.statusCode).json(result.transaction)
+    dataService.getTransaction(req.body.acno).then(result=>{
 
+        res.status(result.statusCode).json(result)
+    })
+    
+    
+
+})
+
+//delete API
+
+app.delete('/deleteAcc/:acno',jwtMiddleWare,(req,res)=>{
+    dataService.deleteAcc(req.params.acno).then(result=>{
+        res.status(result.statusCode).json(result)
+    })
 })
 
 

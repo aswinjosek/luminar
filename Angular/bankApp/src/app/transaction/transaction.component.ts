@@ -11,17 +11,28 @@ export class TransactionComponent implements OnInit {
   transactions:any
   acno:any
   balance:any
-  uname:any=this.ds.currentUser
+  uname:any=localStorage.getItem("currentUser")
   // myDate:any=new Date()
 
   constructor(private ds:DataService,private datePipe: DatePipe) {
-    this.acno=JSON.parse(localStorage.getItem("accountNo")|| '')
-    this.transactions=this.ds.getTransaction(this.acno)
-    this.balance=this.ds.userBalance(this.acno)
+    this.acno=localStorage.getItem("currentAcno")
+    this.ds.getTransaction(this.acno)
+    .subscribe((result:any)=>{
+      if(result){
+        
+        this.transactions=result.transaction
+        console.log(result);
+        
+      }
+    },
+    (result)=>{
+      alert(result)
+    })
+    // this.balance=this.ds.userBalance(this.acno)
     
     
-    console.log(this.transactions);
-    console.log(this.uname);
+    // console.log(this.transactions);
+    // console.log(this.uname);
     
     
    }

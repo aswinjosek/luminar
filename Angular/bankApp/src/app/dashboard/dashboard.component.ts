@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder,Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { DataService } from '../services/data.service';
 import { TransactionComponent } from '../transaction/transaction.component';
 
@@ -10,8 +11,8 @@ import { TransactionComponent } from '../transaction/transaction.component';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  user=this.data.currentUser
-  acno=this.tc.acno
+  user:any
+  acno:any
   
   
 
@@ -32,12 +33,14 @@ export class DashboardComponent implements OnInit {
     wpswd:['',[Validators.required,Validators.pattern('[0-9a-z]*')]],
     wamt:['',[Validators.required,Validators.pattern('[0-9]*')]]
   })
+  constructor(private data:DataService,private fb:FormBuilder,private tc:TransactionComponent, private router:Router) { 
+    this.user=localStorage.getItem("currentUser")
 
-  constructor(private data:DataService,private fb:FormBuilder,private tc:TransactionComponent) { }
+  }
 
   ngOnInit(): void {
     
-    
+   
   }
 
   deposit(){
@@ -47,11 +50,17 @@ export class DashboardComponent implements OnInit {
     var amt=this.depositForm.value.amt
     
    if(this.depositForm.valid){
-      var result=this.data.deposit(acno,pswd,amt)
-      var bal=this.data.user[acno]["balance"]
-      if(result){
-        alert(amt+ " deposited. new bal is " +bal)
-      }
+
+    
+      this.data.deposit(acno,pswd,amt).subscribe((result:any)=>{
+        if(result){
+          alert(result.message)
+        }
+      },
+      (result)=>{
+        alert(result.error.message)
+      })
+     
    }
    else{
      alert("form not valid")
@@ -66,11 +75,16 @@ export class DashboardComponent implements OnInit {
     var wpswd=this.withdrawForm.value.wpswd
     var wamt=this.withdrawForm.value.wamt
     if(this.withdrawForm.valid){
-      var result=this.data.withdraw(wacno,wpswd,wamt)
-      var bal=this.data.user[wacno]["balance"]
-      if(result){
-        alert(wamt+" withdrawed. new bal is " + bal)
-      }
+      this.data.withdraw(wacno,wpswd,wamt).subscribe((result:any)=>{
+        if(result){
+          alert(result.message)
+        }
+
+      },
+      (result)=>{
+        alert(result.error.message)
+      })
+     
     }
     else{
       alert("invalid form")
@@ -80,8 +94,36 @@ export class DashboardComponent implements OnInit {
     
   }
   balance(){
-    var result=this.data.userBalance(this.acno)
-    alert(result)
+    
+    alert("yet to be done")
+
+  }
+
+  deleteConfirm(){
+    this.acno=localStorage.getItem("currentAcno")
+
+  }
+
+  onDelete(event:any){
+    this.data.deleteAcc(event)
+    .subscribe((result:any)=>{
+      if(result){
+        alert(result.message)
+        localStorage.removeItem("token")
+        this.router.navigateByUrl("")
+      }
+    },
+    (result)=>{
+      alert(result.message)
+
+    })
+
+
+  }
+
+  onCancel(){
+
+    this.acno=""
 
   }
  
