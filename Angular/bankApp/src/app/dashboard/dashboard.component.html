@@ -3,11 +3,17 @@
     <h1>hello {{user}}</h1>
     <br>
     <a routerLink="/transaction">transaction history</a>
+    <p>Login Details :{{dLogin}}</p>
+    <p>Login Details :{{dLogin | date: 'short'}}</p>
+    <app-animations></app-animations>
+    <button (click)="logOut()">LogOut</button>
+
+
     <div class="row">
-        <div class="col-6">
+        <div class="col-6" [ngClass]="acno?'apply':''">
             <form (ngSubmit)="deposit()" [formGroup]="depositForm">
                 <div class="account mt-5 p-2 d-flex-justify-content-center">
-                    <h3 class="text-center text-black">Deposit</h3>
+                    <h3 appHighlight class="text-center text-black">Deposit</h3>
                     <div class="row mt-5">
                         <div class="col-12 mt-3">
                             <input type="text" class="form-control" id="acno" name="acno" formControlName="acno" 
@@ -44,10 +50,10 @@
 
         
             
-            <div class="col-6">
+            <div class="col-6" [ngClass]="acno? 'apply': '' ">
                 <form (ngSubmit)="withdraw()" [formGroup]="withdrawForm" >
                 <div class="account mt-5 p-2 d-flex-justify-content-center">
-                    <h3 class="text-center text-black">Withdraw</h3>
+                    <h3 appHighlight class="text-center text-black">Withdraw</h3>
                     <div class="row mt-5">
                     <div class="col-12 mt-3">
                         <input type="text" class="form-control" id="wacno" name="wacno" formControlName="wacno"

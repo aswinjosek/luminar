@@ -13,6 +13,7 @@ import { TransactionComponent } from '../transaction/transaction.component';
 export class DashboardComponent implements OnInit {
   user:any
   acno:any
+  dLogin:Date =new Date()
   
   
 
@@ -39,6 +40,11 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    if(!localStorage.getItem("token")){
+      alert("please Login")
+      this.router.navigateByUrl("")
+    }
     
    
   }
@@ -125,6 +131,11 @@ export class DashboardComponent implements OnInit {
 
     this.acno=""
 
+  }
+
+  logOut(){
+    localStorage.removeItem("token")
+    this.router.navigateByUrl("")
   }
  
 
