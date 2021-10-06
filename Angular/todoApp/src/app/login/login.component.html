@@ -1,0 +1,45 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4">
+            <mat-card>
+                <h1 style="text-align: center;">Login</h1>
+                <form class="example-form" [formGroup]="loginForm">
+                  <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Username</mat-label>
+        
+                    <input type="text" matInput name="username" formControlName="username" placeholder="Username" />
+                    <mat-error *ngIf="
+                        (this.loginForm.get('username')?.touched ||
+                          this.loginForm.get('username')?.dirty) &&
+                        this.loginForm.get('username')?.errors
+                      ">
+                      Please enter a valid username
+                    </mat-error>
+                  </mat-form-field>
+        
+                  <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Password</mat-label>
+        
+                    <input type="password" matInput name="password" formControlName="password" placeholder="Password" />
+                    <mat-error *ngIf="
+                        (this.loginForm.get('password')?.touched ||
+                          this.loginForm.get('password')?.dirty) &&
+                        this.loginForm.get('password')?.errors
+                      ">
+                      Please enter a valid password
+                    </mat-error>
+                  </mat-form-field>
+                </form>
+               <div class="d-flex justify-content-center"><button mat-raised-button color="primary">Login</button></div> 
+              <div class="d-flex justify-content-end">    <a routerLink="register" mat-button color="accent">Register</a>
+              </div> 
+            
+
+
+              </mat-card>
+        </div>
+        <div class="col-4"></div>
+    </div>
+</div>
