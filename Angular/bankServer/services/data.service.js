@@ -244,7 +244,6 @@ const getTransaction = (acno) => {
 const deleteAcc=(acno)=>{
   return db.User.deleteOne({acno}).then((user)=>{
     if(user){
-      console.log(user.de);
       return{
         statusCode: 200,
         status: true,

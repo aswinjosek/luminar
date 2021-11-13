@@ -5,9 +5,16 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { TodoViewComponent } from './todo-view/todo-view.component';
+import { HttpClientModule } from '@angular/common/http';
+import { AddTodoComponent } from './add-todo/add-todo.component';
+// import { EditTodoComponent } from './edit-todo/edit-todo.component';
+import { DatePipe } from '@angular/common';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
+
 
 @NgModule({
   declarations: [
@@ -15,15 +22,20 @@ import { NavbarComponent } from './navbar/navbar.component';
     LoginComponent,
     RegisterComponent,
     NavbarComponent,
+    TodoViewComponent,
+    AddTodoComponent,
+    // EditTodoComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [DatePipe,],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
