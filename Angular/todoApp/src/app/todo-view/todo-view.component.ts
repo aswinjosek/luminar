@@ -65,7 +65,7 @@ export class TodoViewComponent implements OnInit {
     // this.date=date.toLocaleDateString("af-ZA")
     this.date=date;
     
-    console.log(this.date);
+    // console.log(this.date);
 
     this.todoId = id;
   }

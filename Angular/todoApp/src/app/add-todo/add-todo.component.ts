@@ -32,7 +32,7 @@ export class AddTodoComponent implements OnInit {
   constructor(private ds: DataService, private fb:FormBuilder,private datepipe: DatePipe, private router:Router) { 
     this.objId=localStorage.getItem("id")
     this.username= localStorage.getItem("currentUser")
-    // this.myDate = this.datepipe.transform(this.myDate,"dd/MM/yyyy");
+    this.myDate = this.datepipe.transform(this.myDate,"yyyy-MM-dd");
     console.log(this.myDate);
     // this.ds.todoFind(this.objId, this.myDate).subscribe(
     //   (data: any) => {
@@ -67,8 +67,11 @@ export class AddTodoComponent implements OnInit {
           console.log(result);
           
           // console.log(result.todos);
-          this.todos=result.todos
+          // this.todos=result.todos
+          // console.log(this.todos);
+          this.todos=result.todos.filter((keys:any)=>keys.date==this.myDate)
           console.log(this.todos);
+          
           
           
           

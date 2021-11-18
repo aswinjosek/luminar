@@ -30,9 +30,8 @@ export class DataService {
     const data={
       username,
       todo,
-      date
-      // date:date.toISOString().split('T')[0]
-      // date:this.datepipe.transform(date,"dd/MM/yyyy")
+      // date
+      date:this.datepipe.transform(date,"yyyy-MM-dd")
     }
     
     return this.http.post("http://localhost:3000/addTodo",data)
@@ -62,8 +61,8 @@ export class DataService {
   todoUpdate(objId:any,todoId:any,updatedTodo:any,updatedDate:any){
     const data={
       objId,todoId,updatedTodo,
-      updatedDate
-      // updatedDate:this.datepipe.transform(updatedDate,"dd/MM/yyyy")
+      // updatedDate
+      updatedDate:this.datepipe.transform(updatedDate,"yyyy-MM-dd")
     }
     console.log(data);
     
