@@ -51,7 +51,7 @@ export class TodoViewComponent implements OnInit {
   todoDelete(todoId: any) {
     this.ds.todoDelete(this.objId, todoId).subscribe((result: any) => {
       if (result) {
-        alert(result.message);
+        // alert(result.message);
 
         window.location.reload();
       }
